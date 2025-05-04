@@ -1,44 +1,41 @@
-function plantFlower() {
-  const garden = document.getElementById('garden');
-  const element = document.createElement('div');
+function showNotification(message) {
+  const notif = document.createElement("div");
+  notif.className = "notification";
+  notif.textContent = message;
 
-  const types = ['sunflower', 'daisy', 'tulip', 'heart'];
-  const randomType = types[Math.floor(Math.random() * types.length)];
-  element.className = randomType;
+  // Random position within the viewport
+  const maxTop = window.innerHeight - 80; // Adjusted for safe bottom space
+  const maxLeft = window.innerWidth - 250; // Adjusted for width of the box
 
-  garden.appendChild(element);
+  const top = Math.random() * maxTop;
+  const left = Math.random() * maxLeft;
 
-  // Sweet message notification (if you're using that too)
-  const messages = [
-    "You're my sunshine 🌞",
-    "You make everything better 💖",
-    "My heart blooms for you 🌷",
-    "You light up my world ✨",
-    "Hi Summer! You're loved ❤️",
-    "You're my favorite person 🥺",
-    "Click more if you miss me 😘",
-    "I’m so lucky to know you 🍀",
-    "You have the prettiest smile 😊",
-    "My heart chose you 💘",
-    "Thinking of you always 🌼",
-    "You're sweeter than candy 🍬",
-    "I hope you're smiling right now 😄",
-    "I wish I could hug you tight 🤗",
-    "You're the reason I’m happy 💞",
-    "With you, everything feels right 🌈",
-    "You’re my safe space 🏡",
-    "You’re the prettiest flower 🌸",
-    "I love you more every click 💗",
-    "You deserve all the love in the world 🌍"
-  ];
+  notif.style.position = "absolute";
+  notif.style.top = `${top}px`;
+  notif.style.left = `${left}px`;
 
-  const message = messages[Math.floor(Math.random() * messages.length)];
-  const notification = document.createElement('div');
-  notification.className = 'notification';
-  notification.textContent = message;
-  document.body.appendChild(notification);
+  document.body.appendChild(notif);
 
   setTimeout(() => {
-    notification.remove();
-  }, Math.random() * 3000 + 7000); // 7–10 seconds
+    notif.remove();
+  }, 4000); // stays for 4 seconds
 }
+
+const messages = [
+  "You're my sunshine 🌞",
+  "You make everything better 💖",
+  "My heart blooms for you 🌷",
+  "You light up my world ✨",
+  "Hi Summer! You're loved ❤️",
+  "You're my favorite person 🥺",
+  "Click more if you miss me 😘",
+  "I can't wait to see you again 🥰",
+  "You're my reason to smile 😊",
+  "Forever and always, you're in my heart 💖"
+];
+
+// Trigger random notifications when the user clicks the page
+document.body.addEventListener("click", () => {
+  const randomIndex = Math.floor(Math.random() * messages.length);
+  showNotification(messages[randomIndex]);
+});
