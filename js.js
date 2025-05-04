@@ -31,6 +31,5 @@ function plantFlower() {
 
   // Auto-remove after 3–5 seconds
   setTimeout(() => {
-    notification.remove();
-  }, Math.random() * 2000 + 3000); // 3000–5000 ms
-}
+  notification.remove();
+}, Math.random() * 3000 + 7000); // 7000–10000 ms
